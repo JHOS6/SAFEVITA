@@ -33,19 +33,6 @@
       margin-top: 20px;
       border-radius: 8px;
     }
-    button {
-  background-color: #25D366;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #1ebe57;
-}
 
   </style>
 </head>
@@ -67,25 +54,7 @@ button:hover {
     +212 6 88 88 88 88 (Papa)
   </div>
 
-  <button onclick="envoyerLocalisation()">📍 Envoyer ma localisation</button>
-<script>
-  function envoyerLocalisation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        const numero = "212644373744"; // mets ici le numéro WhatsApp SANS "+"
-        const message = `Voici ma position actuelle : https://www.google.com/maps?q=${latitude},${longitude}`;
-        const whatsappURL = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, '_blank');
-      }, function(error) {
-        alert("Impossible d’obtenir la position. Activez la localisation.");
-      });
-    } else {
-      alert("La géolocalisation n’est pas supportée par ce navigateur.");
-    }
-  }
-</script>
 </body>
 </html>
+
 
