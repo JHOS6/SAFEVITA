@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiche d'Urgence</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f7ff;
+      color: #222;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #0066cc;
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+    h2 {
+      text-align: center;
+      color: #0066cc;
+    }
+    .info {
+      margin: 10px 0;
+    }
+    .label {
+      font-weight: bold;
+    }
+    .emergency {
+      background: #ffefef;
+      border: 1px solid red;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+    button {
+  background-color: #25D366;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #1ebe57;
+}
+
+  </style>
+</head>
+<body>
+
+  <h2>🩺 Fiche d'Urgence</h2>
+
+  <div class="info"><span class="label">Nom :</span> Bouaazza</div>
+  <div class="info"><span class="label">Prénom :</span> Mohamed</div>
+  <div class="info"><span class="label">Âge :</span> 25 ans</div>
+  <div class="info"><span class="label">Maladies :</span> Diabet</div>
+  <div class="info"><span class="label">Allergies :</span> Aucune</div>
+
+  <div class="emergency">
+    📞 <strong>Numéro à appeler :</strong><br>
+    +212 6 99 99 99 99 (Maman)<br>
+    +212 6 88 88 88 88 (Papa)
+  </div>
+
+  <button onclick="envoyerLocalisation()">📍 Envoyer ma localisation</button>
+<script>
+  function envoyerLocalisation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const numero = "212644373744"; // mets ici le numéro WhatsApp SANS "+"
+        const message = `Voici ma position actuelle : https://www.google.com/maps?q=${latitude},${longitude}`;
+        const whatsappURL = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+      }, function(error) {
+        alert("Impossible d’obtenir la position. Activez la localisation.");
+      });
+    } else {
+      alert("La géolocalisation n’est pas supportée par ce navigateur.");
+    }
+  }
+</script>
+</body>
+</html>
